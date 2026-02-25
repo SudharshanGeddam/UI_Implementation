@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_intl_phone_field/flutter_intl_phone_field.dart';
+import 'package:user_ui/auth/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget{
   const LoginScreen({super.key});
@@ -43,11 +44,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 30,),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(onPressed: (){},
-                    style: ButtonStyle(
-                      elevation: WidgetStatePropertyAll(1),
+                    child: ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => OtpScreen()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
                     ), 
-                    child: Text("Send OTP", style: TextStyle(color: Colors.black),)),
+                    child: Text("Send OTP", style: TextStyle(color: Colors.white),)),
                   )
 
                 ],

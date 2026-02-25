@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:user_ui/screens/home_screen.dart';
 
-class OtpScreen extends StatefulWidget{
+class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
 
   @override
@@ -13,43 +14,60 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(),
-              child: Image.asset('assets/images/login_bg.png'),
-            ),
-            const SizedBox(height: 30,),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text("Verify", style: TextStyle(
-                   fontSize: 22, fontWeight: FontWeight.bold,
-                  ),),
-                  const SizedBox(height: 20,),
-                  Text("Please enter 6-digit OTP sent to your Mobile number", style: TextStyle(
-                    color: Colors.blueGrey, fontSize: 18,
-                  ),),
-                  const SizedBox(height: 50,),
-                  Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 24),
+        children: [
+          Container(
+            decoration: BoxDecoration(),
+            child: Image.asset('assets/images/login_bg.png'),
+          ),
+          const SizedBox(height: 30),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Text(
+                  "Verify",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  "Please enter 6-digit OTP sent to your Mobile number",
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 18),
+                ),
+                const SizedBox(height: 50),
+                Padding(
+                  padding: EdgeInsetsGeometry.symmetric(horizontal: 24),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: List.generate(6, (index) => _buildOtpBox(index)),
-                  ),),
-                  const SizedBox(height: 30,),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(onPressed: (){},
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
-                    ), 
-                    child: Text("Verify", style: TextStyle(color: Colors.white),)),
+                    ),
+                    child: Text(
+                      "Verify",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -65,7 +83,7 @@ class _OtpScreenState extends State<OtpScreen> {
           counterText: "",
           border: OutlineInputBorder(),
         ),
-        onChanged: (value){},
+        onChanged: (value) {},
       ),
     );
   }
